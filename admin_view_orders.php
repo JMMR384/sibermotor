@@ -52,3 +52,47 @@
                 ?>
               </tbody>
             </table>
+
+            <div class='col-md-12 center text-center'>
+              <span class='left' id='total_reg'></span>
+              <ul class='pagination pager' id='myPager'></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- view cart/order details selected by admin -->
+    <?php if (isset($_GET["view_order"])) { ?>
+    <div class="rounded-card-parent">
+      <div class="card rounded-card">
+        <div class="card-content">
+          <span class="card-title cyan-text bold">
+            Cart/Order Details
+            <?php echo("[".$_GET["username"]."]");?>
+          </span>
+            <?php
+              // View Selected Customer Cart/Orders 
+              if (isset($_GET["view_order"]))
+              {
+                $uid = $_GET["view_order"];
+                include_once "static/pages/cart_items.php";
+                include_once "static/pages/order_items.php";
+              }  
+            ?>
+        </div>
+      </div>
+    </div>
+  <?php } ?>
+  </div>
+</body>
+
+<script type="text/javascript">
+  window.onload = function() {
+    var elems  = document.querySelectorAll("input[type=range]");
+    M.Range.init(elems);
+  };
+</script>
+<?php include "footer.php"; ?>
+</html>
+
